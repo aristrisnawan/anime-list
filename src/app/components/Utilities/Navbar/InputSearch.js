@@ -6,10 +6,15 @@ import { useRef } from "react";
 const InputSearch = () => {
   const searchRef = useRef();
   const router = useRouter();
+  
   const handleSearch = (e) => {
-    e.preventDefault();
     const keyword = searchRef.current.value;
-    router.push(`/search/${keyword}`);
+
+    if(keyword.trim() == "") return
+    if (e.key === "Enter" || e.type === "click") {
+      e.preventDefault();
+      router.push(`/search/${keyword}`);
+    }
   };
   return (
     <div className=" relative">
@@ -18,7 +23,7 @@ const InputSearch = () => {
           placeholder="cari anime . . ."
           className=" p-2 rounded w-full"
           ref={searchRef}
-          onkeypress={handleSearch}
+          onKeyDown={handleSearch}
         />
         <button className=" absolute top-2 end-1" onClick={handleSearch}>
           <MagnifyingGlass size={24} />
