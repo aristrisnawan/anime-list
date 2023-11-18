@@ -11,7 +11,7 @@ const page = async () => {
     <>
       {/* anime populer */}
       <section>
-        <Header title="Paling Populer" linkHref="/" linkTitle="Lihat Semua" />
+        <Header title="Paling Populer" linkHref="/populer" linkTitle="Lihat Semua" />
         <AnimeList api={topAnime} />
       </section>
     </>
