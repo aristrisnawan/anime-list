@@ -35,7 +35,7 @@ const Pagination = ({ page, lastPage, setPage }) => {
       </p>
       <button
         className={`transition-all ${
-          page === lastPage
+          page >= lastPage
             ? " text-color-secondary"
             : "text-color-primary hover:text-color-accent"
         }`}
