@@ -4,7 +4,7 @@ import HeaderMenu from "@/app/components/Utilities/HeaderMenu";
 import Pagination from "@/app/components/Utilities/Pagination";
 import AnimeList from "@/app/components/AnimeList";
 import { useEffect, useState } from "react";
-import { getAnimeResponse } from "../libs/api-libs";
+import { getAnimeResponse } from "../../libs/api-libs";
 
 const Populer = () => {
   const [page, setPage] = useState(1);
