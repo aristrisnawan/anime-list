@@ -8,8 +8,18 @@ const page = async () => {
     "recommendations/anime",
     "entry"
   );
+  function shuffleArray(array) {
+    const shuffledArray = [...array];
+    for (let i = shuffledArray.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+    }
+    return shuffledArray;
+  }
+  const allAnimeRecommendations = recomendedAnime; 
+  const shuffledAnimeRecommendations = shuffleArray(allAnimeRecommendations);
   recomendedAnime = {
-    data: recomendedAnime.slice(0,8),
+    data: shuffledAnimeRecommendations.slice(0,8),
   };
   return (
     <>
