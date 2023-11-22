@@ -1,6 +1,6 @@
 import AnimeList from "@/app/components/AnimeList";
 import Header from "./components/AnimeList/Header";
-import { getAnimeResponse, getNestedAnimeResponse } from "../libs/api-libs";
+import { getAnimeResponse, getNestedAnimeResponse, reproduce } from "../libs/api-libs";
 
 const page = async () => {
   const topAnime = await getAnimeResponse("top/anime", "limit=8");
@@ -8,19 +8,7 @@ const page = async () => {
     "recommendations/anime",
     "entry"
   );
-  function shuffleArray(array) {
-    const shuffledArray = [...array];
-    for (let i = shuffledArray.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
-    }
-    return shuffledArray;
-  }
-  const allAnimeRecommendations = recomendedAnime; 
-  const shuffledAnimeRecommendations = shuffleArray(allAnimeRecommendations);
-  recomendedAnime = {
-    data: shuffledAnimeRecommendations.slice(0,8),
-  };
+  recomendedAnime = reproduce(recomendedAnime,8)
   return (
     <>
       {/* anime populer */}
